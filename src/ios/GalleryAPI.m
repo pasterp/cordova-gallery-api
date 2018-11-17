@@ -297,14 +297,12 @@
                                                             resultHandler:^(NSData* _Nullable imageData, NSString* _Nullable dataUTI, UIImageOrientation orientation, NSDictionary* _Nullable info) {
                                                                 if (imageData) {
                                                                     //                                                                Processing Image Data if needed
-                                                                    if (orientation == UIImageOrientationUp) {
-                                                                        mediaData = imageData;
-                                                                    }
-                                                                    else {
-                                                                        UIImage* image = [UIImage imageWithData:imageData];
+                                                                    // Image must always be converted to JPEG to avoid reading HEIC files
+                                                                    UIImage* image = [UIImage imageWithData:imageData];
+                                                                    if (orientation != UIImageOrientationUp) {
                                                                         image = [self fixrotation:image];
-                                                                        mediaData = UIImageJPEGRepresentation(image, 1);
                                                                     }
+                                                                    mediaData = UIImageJPEGRepresentation(image, 1);
 
                                                                     //writing image to a file
                                                                     NSError* err = nil;
@@ -362,14 +360,12 @@
                                                                                 resultHandler:^(NSData* _Nullable imageData, NSString* _Nullable dataUTI, UIImageOrientation orientation, NSDictionary* _Nullable info) {
                                                                                     if (imageData) {
                                                                                         //                                                                Processing Image Data if needed
-                                                                                        if (orientation == UIImageOrientationUp) {
-                                                                                            mediaData = imageData;
-                                                                                        }
-                                                                                        else {
-                                                                                            UIImage* image = [UIImage imageWithData:imageData];
+                                                                                        // Image must always be converted to JPEG to avoid reading HEIC files
+                                                                                        UIImage* image = [UIImage imageWithData:imageData];
+                                                                                        if (orientation != UIImageOrientationUp) {
                                                                                             image = [self fixrotation:image];
-                                                                                            mediaData = UIImageJPEGRepresentation(image, 1);
                                                                                         }
+                                                                                        mediaData = UIImageJPEGRepresentation(image, 1);
 
                                                                                         //writing image to a file
                                                                                         NSError* err = nil;
