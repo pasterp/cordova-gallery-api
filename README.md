@@ -26,7 +26,7 @@ Returns an array of object with the following fields:
 
 ### Installation
 
-    cordova plugin add https://github.com/Collaborne/cordova-gallery-api.git --save --nofetch
+    cordova plugin add https://github.com/Collaborne/cordova-gallery-api.git --save
 
 ### Quick example
 
