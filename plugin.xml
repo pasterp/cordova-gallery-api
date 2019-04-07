@@ -11,6 +11,7 @@
     </js-module>
     <!-- android -->
     <platform name="android">
+        <framework src="com.android.support:support-v4:23.0.0" />
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="GalleryAPI">
                 <param name="android-package" value="com.subitolabs.cordova.galleryapi.GalleryAPI" />
