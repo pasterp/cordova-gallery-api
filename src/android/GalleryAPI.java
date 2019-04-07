@@ -1,10 +1,11 @@
-package com.subitolabs.cordova.galleryapi;
+package me.phelipot.cordova.galleryapi;
 
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.media.ThumbnailUtils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -15,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.util.Base64;
 import android.widget.Toast;
 
 import org.apache.cordova.*;
@@ -39,6 +41,9 @@ public class GalleryAPI extends CordovaPlugin {
     public static final String ACTION_GET_ALBUMS = "getAlbums";
     public static final String DIR_NAME = ".mendr";
     public static final String SUB_DIR_NAME = ".mendr_hq";
+
+    public static final String ACTION_GET_LAST_MEDIA = "getMedias";
+
 
     private static final int BASE_SIZE = 300;
 
@@ -114,6 +119,18 @@ public class GalleryAPI extends CordovaPlugin {
                 });
 
                 return true;
+            } else if (ACTION_GET_LAST_MEDIA.equals(action)){
+                cordova.getThreadPool().execute(new Runnable() {
+                    public void run() {
+                        try {
+                            ArrayOfObjects medias = getLastMedias();
+                            callbackContext.success(new JSONArray(medias));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            callbackContext.error(e.getMessage());
+                        }
+                    }
+                });
             }
             callbackContext.error("Invalid action");
             return false;
@@ -145,6 +162,43 @@ public class GalleryAPI extends CordovaPlugin {
             results.add(0, collection);
 
         return results;
+    }
+
+    public ArrayOfObjects getLastMedias() throws JSONException{
+        String[] projection = {MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA};
+        Cursor cursor = getContext().getContentResolver().query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                projection,
+                null,
+                null,
+                null
+        );
+
+        ArrayOfObjects collection = new ArrayOfObjects();
+        
+        if (cursor.moveToFirst()) {
+            Object tmp = new Object();
+
+            
+            int dataColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            String uri = cursor.getString(dataColumn);
+            int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID);
+            int id = cursor.getInt(idColumn);
+            Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(uri), 128, 128);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  
+            ThumbImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream .toByteArray();
+
+
+            tmp.put("uri", uri);
+            tmp.put("id", id);
+            tmp.put("thumbnail", Base64.encodeToString(byteArray, Base64.DEFAULT));
+
+            collection.add(tmp);
+        }
+        Collections.reverse(collection);
+
+        return collection;
     }
 
     private ArrayOfObjects getMedia(String bucket) throws JSONException {

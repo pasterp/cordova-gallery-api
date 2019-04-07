@@ -1,7 +1,30 @@
 {
-  "name": "com.subitolabs.android.cordova.galleryapi",
-  "version": "0.2.0",
-  "description": "Cordova gallery API plugin",
+  "_from": "git+https://github.com/pasterp/cordova-gallery-api.git",
+  "_id": "me.phelipot.android.cordova.galleryapi@0.2.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/me.phelipot.android.cordova.galleryapi",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/pasterp/cordova-gallery-api.git",
+    "rawSpec": "https://github.com/pasterp/cordova-gallery-api.git",
+    "saveSpec": "git+https://github.com/pasterp/cordova-gallery-api.git",
+    "fetchSpec": "https://github.com/pasterp/cordova-gallery-api.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/pasterp/cordova-gallery-api.git#c1b7311252e58f2e56fbf49d3ebcc6a2e103ab58",
+  "_spec": "https://github.com/pasterp/cordova-gallery-api.git",
+  "_where": "/home/pascal/Projects/WhatBrandIsThat/app",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Collaborne/cordova-gallery-api/issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "com.subitolabs.android.cordova.galleryapi",
     "platforms": [
@@ -9,10 +32,9 @@
       "ios"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Collaborne/cordova-gallery-api.git"
-  },
+  "deprecated": false,
+  "description": "Cordova gallery API plugin",
+  "homepage": "https://github.com/Collaborne/cordova-gallery-api#readme",
   "keywords": [
     "cordova",
     "gallery",
@@ -22,10 +44,11 @@
     "cordova-android",
     "cordova-ios"
   ],
-  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Collaborne/cordova-gallery-api/issues"
+  "name": "com.subitolabs.android.cordova.galleryapi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Collaborne/cordova-gallery-api.git"
   },
-  "homepage": "https://github.com/Collaborne/cordova-gallery-api#readme"
+  "version": "0.2.1"
 }
