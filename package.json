@@ -22,11 +22,11 @@
   "_where": "/home/pascal/Projects/WhatBrandIsThat/app",
   "author": "",
   "bugs": {
-    "url": "https://github.com/Collaborne/cordova-gallery-api/issues"
+    "url": "https://github.com/pasterp/cordova-gallery-api/issues"
   },
   "bundleDependencies": false,
   "cordova": {
-    "id": "com.subitolabs.android.cordova.galleryapi",
+    "id": "me.phelipot.android.cordova.galleryapi",
     "platforms": [
       "android",
       "ios"
@@ -34,7 +34,7 @@
   },
   "deprecated": false,
   "description": "Cordova gallery API plugin",
-  "homepage": "https://github.com/Collaborne/cordova-gallery-api#readme",
+  "homepage": "https://github.com/pasterp/cordova-gallery-api#readme",
   "keywords": [
     "cordova",
     "gallery",
@@ -45,10 +45,10 @@
     "cordova-ios"
   ],
   "license": "MIT",
-  "name": "com.subitolabs.android.cordova.galleryapi",
+  "name": "me.phelipot.android.cordova.galleryapi",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Collaborne/cordova-gallery-api.git"
+    "url": "git+https://github.com/pasterp/cordova-gallery-api.git"
   },
   "version": "0.2.1"
 }
