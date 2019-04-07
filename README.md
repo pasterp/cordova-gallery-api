@@ -26,7 +26,7 @@ Returns an array of object with the following fields:
 
 ### Installation
 
-    cordova plugin add https://github.com/pasterp/cordova-gallery-api.git --save
+    cordova plugin add https://github.com/pasterp/cordova-gallery-api.git --save --link
 
 ### Quick example
 
